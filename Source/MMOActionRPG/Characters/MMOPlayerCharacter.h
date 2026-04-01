@@ -53,9 +53,6 @@ protected:
 	UInputAction* MoveAction;
 
 	UPROPERTY(EditAnywhere, Category="Input")
-	UInputAction* LookAction;
-
-	UPROPERTY(EditAnywhere, Category="Input")
 	UInputAction* MouseLookAction;
 	
 private:
