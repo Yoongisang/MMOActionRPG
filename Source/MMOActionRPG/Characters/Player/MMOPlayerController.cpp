@@ -1,10 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Characters/MMOPlayerController.h"
+#include "Characters/Player/MMOPlayerController.h"
 #include "EnhancedInputSubsystems.h"
 #include "Engine/LocalPlayer.h"
-#include "InputMappingContext.h"
 
 AMMOPlayerController::AMMOPlayerController()
 {
@@ -25,8 +24,8 @@ void AMMOPlayerController::SetupInputComponent()
 	if (IsValid(Subsystem) == false)
 		return;
 	
-	for (const UInputMappingContext* CurrentContext : DefaultMappingContexts)
+	for (int32 i = 0; i <DefaultMappingContexts.Num(); i++)
 	{
-		Subsystem->AddMappingContext(CurrentContext, 0);
+		Subsystem->AddMappingContext(DefaultMappingContexts[i], i);
 	}
 }

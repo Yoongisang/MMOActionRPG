@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Characters/MMOPlayerCharacter.h"
+#include "MMOPlayerCharacter.h"
 #include "Engine/LocalPlayer.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -57,8 +57,8 @@ void AMMOPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInput
 		return;
 	}
 	
-	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
-	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &AMMOPlayerCharacter::DoJumpStart);
+	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &AMMOPlayerCharacter::DoJumpEnd);
 	
 	EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMMOPlayerCharacter::Move);
 	EnhancedInputComponent->BindAction(MouseLookAction, ETriggerEvent::Triggered, this, &AMMOPlayerCharacter::Look);

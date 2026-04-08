@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Characters/MMOCharacterBase.h"
-#include "MMOMonsterBase.generated.h"
+#include "Animation/AnimInstance.h"
+#include "MMOPlayerAnimInstance.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class MMOACTIONRPG_API AMMOMonsterBase : public AMMOCharacterBase
+class MMOACTIONRPG_API UMMOPlayerAnimInstance : public UAnimInstance
 {
 	GENERATED_BODY()
 	
