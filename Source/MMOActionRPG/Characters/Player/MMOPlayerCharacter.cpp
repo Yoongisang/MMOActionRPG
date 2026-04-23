@@ -45,6 +45,14 @@ AMMOPlayerCharacter::AMMOPlayerCharacter()
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
+	
+	// ASC
+	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
+	AbilitySystemComponent->SetIsReplicated(true);
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
+
+	// AttributeSet
+	AttributeSet = CreateDefaultSubobject<UMMOBaseAttributeSet>(TEXT("AttributeSet"));
 }
 
 void AMMOPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
