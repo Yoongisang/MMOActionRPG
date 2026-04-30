@@ -75,6 +75,9 @@ void AMMOPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInput
 void AMMOPlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	if (IsValid(AbilitySystemComponent))
+		AbilitySystemComponent->InitAbilityActorInfo(this, this);
 }
 
 void AMMOPlayerCharacter::DoMove(float Right, float Forward)

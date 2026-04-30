@@ -3,6 +3,7 @@
 
 #include "MMOBaseAttributeSet.h"
 #include "Net/UnrealNetwork.h"
+#include "GameplayEffectExtension.h"
 
 void UMMOBaseAttributeSet::OnRep_HP(const FGameplayAttributeData& OldHP)
 {
@@ -32,4 +33,34 @@ void UMMOBaseAttributeSet::GetLifetimeReplicatedProps(TArray<class FLifetimeProp
 	DOREPLIFETIME_CONDITION_NOTIFY(UMMOBaseAttributeSet, MaxHP, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UMMOBaseAttributeSet, MP, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UMMOBaseAttributeSet, MaxMP, COND_None, REPNOTIFY_Always);
+}
+
+void UMMOBaseAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
+{
+	Super::PreAttributeChange(Attribute, NewValue);
+	
+	if (Attribute == GetHPAttribute())
+	{
+		NewValue = FMath::Clamp(NewValue, 0.f, GetMaxHP());
+	}
+	
+	if (Attribute == GetMPAttribute())
+	{
+		NewValue = FMath::Clamp(NewValue, 0.f, GetMaxMP());
+	}
+}
+
+void UMMOBaseAttributeSet::PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data)
+{
+	Super::PostGameplayEffectExecute(Data);
+	
+	if (Data.EvaluatedData.Attribute == GetHPAttribute())
+	{
+		SetHP(FMath::Clamp(GetHP(), 0.f, GetMaxHP()));
+		if (GetHP() <= 0.f)
+		{
+			// TODO: 사망처리
+		}
+	}
+	// TODO: MP가 스킬 사용 중 0 이 됐을때(마나 지속 소모형 스킬) 태그를 이용해서 스킬 중단 구현
 }

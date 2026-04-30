@@ -35,6 +35,10 @@ public:
 	void OnRep_MaxMP(const FGameplayAttributeData& OldMaxMP);
 	
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
+	// GE가 계산한 값을 AttributeSet에 반영하기 직전에 호출
+	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
+	// GE가 AttributeSet에 완전히 반영된 후 호출 바뀐 결과를 보고 후처리
+	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Attributes", ReplicatedUsing = OnRep_HP)
 	FGameplayAttributeData HP;
