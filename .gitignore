@@ -76,3 +76,8 @@ Plugins/**/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 .idea
+
+# Claude
+.claude/
+CLAUDE.md
+CHECKLIST.md
