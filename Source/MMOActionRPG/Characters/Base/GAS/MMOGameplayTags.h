@@ -22,7 +22,7 @@ namespace MMOGameplayTags
     // Ability.Player - 플레이어 어빌리티 실행 중
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Ability_Player_Attack_Melee)
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Ability_Player_Dodge)
-
+    
     // Ability.Monster - 몬스터 어빌리티 실행 중
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Ability_Monster_Attack)
 
@@ -34,7 +34,7 @@ namespace MMOGameplayTags
     // Combat - 플레이어 전투 윈도우
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Window_Combo)
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Combat_Window_Parry)
-
+    
     // Effect - 공통 버프/디버프
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Effect_Debuff_Slow)
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Effect_Debuff_Stun)
@@ -47,6 +47,7 @@ namespace MMOGameplayTags
 
     // Data - SetByCaller 공통
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Data_Damage)
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN(Data_DamageMultiplier)
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Data_CoolTime)
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Data_DebuffTime)
 }
